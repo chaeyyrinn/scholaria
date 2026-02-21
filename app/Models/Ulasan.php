@@ -10,13 +10,17 @@ class Ulasan extends Model
 
     protected $fillable = [
         'buku_id',
+        'user_id',
         'ulasan',
         'rating'
     ];
 
     public function buku()
     {
-        return $this->belongsTo(Buku::class, 'buku_id');
+        return $this->belongsTo(Buku::class);
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

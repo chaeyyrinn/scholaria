@@ -14,4 +14,6 @@ class DataSiswaController extends Controller
 
         return view('admin.data-siswa.index', compact('data'));
     }
+
+    
 }

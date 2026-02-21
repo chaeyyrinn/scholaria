@@ -8,15 +8,14 @@ use App\Models\Buku;
 
 class Peminjam extends Model
 {
-    protected $table = 'peminjams';
+    protected $table = 'peminjaman';
     protected $fillable = [
         'siswa_id',
         'buku_id',
         'jumlah',
         'tanggal_peminjaman',
         'tanggal_pengembalian',
-        'status_pengembalian'
-
+        'status'
     ];
 
   
@@ -25,7 +24,7 @@ public function siswa()
     return $this->belongsTo(User::class, 'siswa_id');
 }
 
-public function buku ()
+public function buku()
 {
     return $this->belongsTo(Buku::class, 'buku_id');
 }

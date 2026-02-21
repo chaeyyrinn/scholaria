@@ -6,26 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('ulasan', function (Blueprint $table) {
+        Schema::create('ulasans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('buku_id')->constrained('buku')->cascadeOnDelete();
+
+            // relasi ke buku
+            $table->foreignId('buku_id')
+                ->constrained('buku')
+                ->cascadeOnDelete();
+
+            // relasi ke user (siswa)
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            // isi ulasan
             $table->text('ulasan');
-            $table->tinyInteger('rating');
-            
+            $table->tinyInteger('rating'); // 1–5
+
+            // opsional tapi bagus untuk admin
+            // $table->enum('status', ['pending', 'approved'])->default('approved');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('ulasan');
+        Schema::dropIfExists('ulasans');
     }
 };

@@ -9,7 +9,7 @@ use app\Models\Koleksi;
 
 class Buku extends Model
 {
-    protected $table = 'bukus';
+    protected $table = 'buku';
 
     protected $fillable = [
         'judul',
@@ -20,7 +20,8 @@ class Buku extends Model
         'stok',
         'sinopsis',
         'penerbit',
-        'kategori_id'
+        'kategori_id',
+        'status'
     ];
 
     public function kategori() {
@@ -34,4 +35,5 @@ class Buku extends Model
     public function koleksi() {
         return $this->hasMany(Koleksi::class);
     }
+
 }

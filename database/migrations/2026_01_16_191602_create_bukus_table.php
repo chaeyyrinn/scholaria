@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('isbn');
             $table->string('cover');
             $table->unsignedInteger('stok');
-            $table->string('sinopsis');
+            $table->text('sinopsis');
             $table->string('penerbit');
             $table->foreignId('kategori_id')->nullable()->constrained('kategori', 'id');
             $table->timestamps();
